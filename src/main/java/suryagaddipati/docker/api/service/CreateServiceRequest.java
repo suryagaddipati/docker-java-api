@@ -2,7 +2,6 @@
 package suryagaddipati.docker.api.service;
 
 import akka.http.javadsl.model.HttpMethods;
-import com.google.common.base.Strings;
 import suryagaddipati.docker.api.containers.ContainerSpec;
 import suryagaddipati.docker.api.network.Network;
 import suryagaddipati.docker.api.request.ApiRequest;
@@ -42,7 +41,7 @@ public class CreateServiceRequest extends ApiRequest {
     }
 
     public void setNetwork(String network) {
-        if(!Strings.isNullOrEmpty(network)){
+        if(network !=null && "" !=network){
             Networks.add(new Network(network));
         }
     }

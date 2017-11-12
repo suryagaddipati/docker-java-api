@@ -3,7 +3,6 @@ package suryagaddipati.docker.api.request;
 import akka.http.javadsl.model.HttpMethod;
 import akka.http.javadsl.model.HttpRequest;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import suryagaddipati.DockerSlaveConfiguration;
 import suryagaddipati.docker.marshalling.ResponseType;
 
 public  abstract   class ApiRequest {
@@ -20,9 +19,8 @@ public  abstract   class ApiRequest {
     public ApiRequest(HttpMethod method, String url, Class<?> responseClass , ResponseType responseType) {
         this.responseClass = responseClass;
         this.responseType = responseType;
-        final DockerSlaveConfiguration configuration = DockerSlaveConfiguration.get();
         this.method = method;
-        this.url = configuration.getDockerUri()+ url;
+        this.url = url ;
     }
     public ApiRequest(HttpMethod method, String url){
        this(method,url,null,null) ;
